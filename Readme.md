@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов»
 
-* Студент: [Павел Белокопытов](https://up.htmlacademy.ru/nodejs-api/5/user/1551545).
-* Наставник: `Неизвестно`.
+- Студент: [Павел Белокопытов](https://up.htmlacademy.ru/nodejs-api/5/user/1551545).
+- Наставник: [Евгений Наумов](https://htmlacademy.ru/profile/naumov_evg).
 
 ---
 
