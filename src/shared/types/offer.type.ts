@@ -1,10 +1,10 @@
 import { Housing } from './housing.enum.js';
 import { Coordinates } from './coordinates.type.js';
 
-export type Offer = {
+export type OfferType = {
   title: string;
   description: string;
-  date: string,
+  date: Date,
   city: string;
   preview: string;
   photos: string[];

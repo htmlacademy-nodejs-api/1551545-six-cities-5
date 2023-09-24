@@ -1,0 +1,98 @@
+{
+  "api": {
+    "titles": [
+      "Котедж",
+      "Квартира",
+      "Комната",
+      "Номер в отеле",
+      "Загородный дом"
+    ],
+    "descriptions": [
+      "Продается уютный коттедж с просторным садом и видом на озеро.",
+      "Сдается современная квартира с балконом и парковкой возле метро.",
+      "Уютный коттедж с садом и гаражом, идеально для семьи.",
+      "Сдается просторная комната с Wi-Fi в центре города.",
+      "Номер в отеле с видом на море и завтраком включен.",
+      "Сдается стильная квартиру с мебелью и бытовой техникой.",
+      "Загородный дом для отпуска с бассейном и барбекю."
+    ],
+    "dates": [
+      "2023-09-21T19:27:40.284Z",
+      "2023-09-22T19:30:00.284Z",
+      "2023-09-23T20:00:00.284Z",
+      "2023-09-24T21:30:00.284Z",
+      "2023-09-25T00:00:00.284Z"
+    ],
+    "cities": [
+      "Paris",
+      "Cologne",
+      "Brussels",
+      "Amsterdam",
+      "Hamburg",
+      "Dusseldorf"
+    ],
+    "previews": [
+      "https://images.unsplash.com/photo-1561113275-68e8eb1d25a4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2821&q=80",
+      "https://images.unsplash.com/photo-1560331281-54e30c7d5a90?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3570&q=80",
+      "https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3465&q=80",
+      "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3570&q=80",
+      "https://images.unsplash.com/photo-1502672023488-70e25813eb80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3000&q=80"
+    ],
+    "photos": [
+      "photo1.jpg",
+      "photo2.jpg",
+      "photo3.jpg",
+      "photo4.jpg",
+      "photo5.jpg",
+      "photo6.jpg"
+    ],
+    "housingTypes": [
+      "Apartment",
+      "House",
+      "Room",
+      "Hotel"
+    ],
+    "features": [
+      "Breakfast",
+      "Air conditioning",
+      "Laptop friendly workspace",
+      "Baby seat",
+      "Washer",
+      "Towels",
+      "Fridge"
+    ],
+    "authors": [
+      "Исаак Ньютон",
+      "Илон Маск",
+      "Оби-Ван Кеноби",
+      "Майкл Фелпс",
+      "Дмитрий Менделеев"
+    ],
+    "coordinates": [
+      {
+        "longitude": 48.85661,
+        "latitude": 2.351499
+      },
+      {
+        "longitude": 50.938361,
+        "latitude": 6.959974
+      },
+      {
+        "longitude": 50.846557,
+        "latitude": 4.351697
+      },
+      {
+        "longitude": 52.370216,
+        "latitude": 4.895168
+      },
+      {
+        "longitude": 53.550341,
+        "latitude": 10.000654
+      },
+      {
+        "longitude": 51.225402,
+        "latitude": 6.776314
+      }
+    ]
+  }
+}
