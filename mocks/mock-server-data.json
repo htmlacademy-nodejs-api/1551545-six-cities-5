@@ -1,0 +1,111 @@
+{
+  "api": {
+    "title": [
+      "Котедж",
+      "Квартира",
+      "Комната",
+      "Номер в отеле",
+      "Загородный дом"
+    ],
+    "description": [
+      "Продается уютный коттедж с просторным садом и видом на озеро.",
+      "Сдается современная квартира с балконом и парковкой возле метро.",
+      "Уютный коттедж с садом и гаражом, идеально для семьи.",
+      "Сдается просторная комната с Wi-Fi в центре города.",
+      "Номер в отеле с видом на море и завтраком включен.",
+      "Сдается стильная квартиру с мебелью и бытовой техникой.",
+      "Загородный дом для отпуска с бассейном и барбекю."
+    ],
+    "date": [
+      "2023-09-21T19:27:40.284Z",
+      "2023-09-22T19:30:00.284Z",
+      "2023-09-23T20:00:00.284Z",
+      "2023-09-24T21:30:00.284Z",
+      "2023-09-25T00:00:00.284Z"
+    ],
+    "city": [
+      "Киото",
+      "Барселона",
+      "Бангкок",
+      "Лиссанбон",
+      "Куала-Лумпур"
+    ],
+    "preview": [
+      "https://images.unsplash.com/photo-1561113275-68e8eb1d25a4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2821&q=80",
+      "https://images.unsplash.com/photo-1560331281-54e30c7d5a90?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3570&q=80",
+      "https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3465&q=80",
+      "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3570&q=80",
+      "https://images.unsplash.com/photo-1502672023488-70e25813eb80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3000&q=80"
+    ],
+    "photos": [
+      "photo1.jpg",
+      "photo2.jpg",
+      "photo3.jpg",
+      "photo4.jpg",
+      "photo5.jpg",
+      "photo6.jpg"
+    ],
+    "isPremium": [
+      "true", "false"
+    ],
+    "isFavourite": [
+      "true", "false"
+    ],
+    "rating": [
+      1, 2, 3, 4, 5
+    ],
+    "housingType": [
+      "Apartment",
+      "House",
+      "Room",
+      "Hotel"
+    ],
+    "roomCount": [
+      1, 2, 3, 4, 5, 6, 7, 8
+    ],
+    "guestsCount": [
+      1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+    ],
+    "conveniences": [
+      "Breakfast",
+      "Air conditioning",
+      "Laptop friendly workspace",
+      "Baby seat",
+      "Washer",
+      "Towels",
+      "Fridge"
+    ],
+    "author": [
+      "User_1",
+      "User_2",
+      "User_3",
+      "User_4",
+      "User_5"
+    ],
+    "commentsCount": [
+      10, 15, 45, 60, 100
+    ],
+    "coordinates": [
+      {
+        "longitude": 35.011665,
+        "latitude": 135.768326
+      },
+      {
+        "longitude": 41.398039,
+        "latitude": 2.146356
+      },
+      {
+        "longitude": 38.718630,
+        "latitude": -9.142785
+      },
+      {
+        "longitude": 3.137760,
+        "latitude": 101.674659
+      },
+      {
+        "longitude": 13.673958,
+        "latitude": 100.671647
+      }
+    ]
+  }
+}
