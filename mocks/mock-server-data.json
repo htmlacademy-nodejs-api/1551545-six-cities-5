@@ -24,11 +24,12 @@
       "2023-09-25T00:00:00.284Z"
     ],
     "cities": [
-      "Киото",
-      "Барселона",
-      "Бангкок",
-      "Лиссанбон",
-      "Куала-Лумпур"
+      "Paris",
+      "Cologne",
+      "Brussels",
+      "Amsterdam",
+      "Hamburg",
+      "Dusseldorf"
     ],
     "previews": [
       "https://images.unsplash.com/photo-1561113275-68e8eb1d25a4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2821&q=80",
@@ -61,32 +62,36 @@
       "Fridge"
     ],
     "authors": [
-      "User_1",
-      "User_2",
-      "User_3",
-      "User_4",
-      "User_5"
+      "Исаак Ньютон",
+      "Илон Маск",
+      "Оби-Ван Кеноби",
+      "Майкл Фелпс",
+      "Дмитрий Менделеев"
     ],
     "coordinates": [
       {
-        "longitude": 35.011665,
-        "latitude": 135.768326
+        "longitude": 48.85661,
+        "latitude": 2.351499
       },
       {
-        "longitude": 41.398039,
-        "latitude": 2.146356
+        "longitude": 50.938361,
+        "latitude": 6.959974
       },
       {
-        "longitude": 38.718630,
-        "latitude": -9.142785
+        "longitude": 50.846557,
+        "latitude": 4.351697
       },
       {
-        "longitude": 3.137760,
-        "latitude": 101.674659
+        "longitude": 52.370216,
+        "latitude": 4.895168
       },
       {
-        "longitude": 13.673958,
-        "latitude": 101.674659
+        "longitude": 53.550341,
+        "latitude": 10.000654
+      },
+      {
+        "longitude": 51.225402,
+        "latitude": 6.776314
       }
     ]
   }
