@@ -62,11 +62,36 @@
       "Fridge"
     ],
     "authors": [
-      "Исаак Ньютон",
-      "Илон Маск",
-      "Оби-Ван Кеноби",
-      "Майкл Фелпс",
-      "Дмитрий Менделеев"
+      {
+        "name": "Исаак Ньютон",
+        "email": "isaak@icloud.com",
+        "avatar": "avatar1.png",
+        "type": "pro"
+      },
+      {
+        "name": "Илон Маск",
+        "email": "mister-x@gmail.com",
+        "avatar": "avatar2.png",
+        "type": "simple"
+      },
+      {
+        "name": "Оби-Ван Кеноби",
+        "email": "maythe4sbwithu@gmail.com",
+        "avatar": "avatar3.png",
+        "type": "simple"
+      },
+      {
+        "name": "Майкл Фелпс",
+        "email": "swimming4ever@icloud.com",
+        "avatar": "avatar4.png",
+        "type": "pro"
+      },
+      {
+        "name": "Дмитрий Менделеев",
+        "email": "chemistrylover@yandex.ru",
+        "avatar": "avatar5.png",
+        "type": "pro"
+      }
     ],
     "coordinates": [
       {

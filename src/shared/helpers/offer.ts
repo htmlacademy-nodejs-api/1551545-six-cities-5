@@ -1,4 +1,4 @@
-import { OfferType, Housing } from '../types/index.js';
+import { OfferType, HousingType } from '../types/index.js';
 
 export function createOffer(offerData: string): OfferType {
   const [
@@ -16,10 +16,20 @@ export function createOffer(offerData: string): OfferType {
     guestsCount,
     rentPrice,
     conveniences,
-    author,
+    name,
+    email,
+    avatar,
+    type,
     commentsCount,
     coordinates
   ] = offerData.replace('\n', '').split('\t');
+
+  const author = {
+    name,
+    email,
+    avatar,
+    type
+  };
 
   return {
     title,
@@ -31,7 +41,7 @@ export function createOffer(offerData: string): OfferType {
     isPremium: JSON.parse(isPremium),
     isFavourite: JSON.parse(isFavourite),
     rating: JSON.parse(rating),
-    housingType: Housing[housingType as 'Apartment' | 'House' | 'Room' | 'Hotel'],
+    housingType: HousingType[housingType as 'Apartment' | 'House' | 'Room' | 'Hotel'],
     roomCount: Number(roomCount),
     guestsCount: Number(guestsCount),
     rentPrice: Number(rentPrice),

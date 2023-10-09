@@ -36,7 +36,6 @@ export class TSVOfferGenerator implements OfferGenerator {
     const guestsCount = generateRandomValue(GUESTS_COUNT_MIN, GUESTS_COUNT_MAX);
     const price = generateRandomValue(MIN_PRICE, MAX_PRICE).toString();
     const features = getRandomItems<string>(this.mockData.features);
-    const author = getRandomItem<string>(this.mockData.authors);
     const commentsCount = generateRandomValue(0, 1000); // the range of possible comments count is temporary
     const coordinates = getRandomItem<object>(this.mockData.coordinates);
 
@@ -45,6 +44,8 @@ export class TSVOfferGenerator implements OfferGenerator {
     if (coordinates && 'longitude' in coordinates && 'latitude' in coordinates) {
       tsvCoordinates = `${coordinates.longitude};${coordinates.latitude}`;
     }
+
+    const author = Object.values(getRandomItem(this.mockData.authors)).join('\t');
 
     const createdDate = dayjs()
       .subtract(generateRandomValue(FIRST_WEEK_DAY, LAST_WEEK_DAY), 'day')
