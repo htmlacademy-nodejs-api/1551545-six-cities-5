@@ -14,7 +14,7 @@ export class HelpCommand implements Command {
       ${chalk.italic.underline('Комманды:')}
           ${chalk.green('--version:')}                   ${chalk.underline('# выводит номер версии')}
           ${chalk.yellow('--help:')}                      ${chalk.underline('# печатает этот текст')}
-          ${chalk.cyan('--import <path>:')}             ${chalk.underline('# импортирует данные из TSV')}
+          ${chalk.cyan('--import <path> <login> <password> <db-url> <db-name> <salt>:')}             ${chalk.underline('# импортирует данные из TSV')}
           --generate <n> <path> <url>  ${chalk.underline('# генерирует произвольное количество тестовых данных')}
     `);
   }

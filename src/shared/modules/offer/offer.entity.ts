@@ -1,5 +1,6 @@
-import { defaultClasses, getModelForClass, modelOptions, prop, Severity } from '@typegoose/typegoose';
-import { Coordinates, HousingType, OfferType, User } from '../../types/index.js';
+import { defaultClasses, getModelForClass, modelOptions, prop, Ref } from '@typegoose/typegoose';
+import { HousingType } from '../../types/index.js';
+import { UserEntity } from '../user/user.entity.js';
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
 export interface OfferEntity extends defaultClasses.Base {}
@@ -11,57 +12,33 @@ export interface OfferEntity extends defaultClasses.Base {}
 })
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
-export class OfferEntity extends defaultClasses.TimeStamps implements OfferType {
+export class OfferEntity extends defaultClasses.TimeStamps {
   @prop({required: true, trim: true})
   public title!: string;
 
-  @prop({required: true, trim: true})
+  @prop({trim: true})
   public description!: string;
 
-  @prop({required: true})
+  @prop()
   public date!: Date;
 
-  @prop({required: true, trim: true})
-  public city!: string;
-
-  @prop({required: true, trim: true})
+  @prop()
   public preview!: string;
 
-  @prop({required: true, allowMixed: Severity.ALLOW})
-  public photos!: string[];
+  @prop({required: false})// temporary not required
+  public price!: number;
 
-  @prop({required: true})
-  public isPremium!: boolean;
+  @prop({
+    type: () => String,
+    enum: HousingType
+  })
+  public type!: HousingType;
 
-  @prop({required: true})
-  public isFavourite!: boolean;
-
-  @prop({required: true})
-  public rating!: number;
-
-  @prop({required: true})
-  public housingType!: HousingType;
-
-  @prop({required: true})
-  public roomCount!: number;
-
-  @prop({required: true})
-  public guestsCount!: number;
-
-  @prop({required: true})
-  public rentPrice!: number;
-
-  @prop({required: true, allowMixed: Severity.ALLOW})
-  public conveniences!: string[];
-
-  @prop({required: true, allowMixed: Severity.ALLOW})
-  public author!: User;
-
-  @prop({required: true})
-  public commentsCount!: number;
-
-  @prop({required: true, allowMixed: Severity.ALLOW})
-  public coordinates!: Coordinates;
+  @prop({
+    ref: UserEntity,
+    required: true
+  })
+  public userId!: Ref<UserEntity>;
 }
 
 export const OfferModel = getModelForClass(OfferEntity);
