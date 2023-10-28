@@ -39,6 +39,8 @@ export class OfferEntity extends defaultClasses.TimeStamps {
     required: true
   })
   public userId!: Ref<UserEntity>;
+
+  public isPremium!: boolean;
 }
 
 export const OfferModel = getModelForClass(OfferEntity);
