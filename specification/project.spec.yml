@@ -1,4 +1,6 @@
 openapi: 3.0.0
+servers:
+  - url: http://localhost:5000
 info:
   title: API сервер для демо-проекта «Шесть городов».
   description: |-
@@ -8,12 +10,12 @@ info:
     url: https://opensource.org/licenses/MIT
   version: 2.0.0
 tags:
+  - name: users
+    description: Действия с пользователями.
   - name: offers
     description: Действия с предложениями по аренде.
   - name: comments
     description: Действия с комментариями.
-  - name: users
-    description: Действия с пользователями.
 paths:
   /users/register:
     post:
@@ -30,16 +32,16 @@ paths:
               $ref: '#/components/schemas/createUser'
         required: true
 
-        responses:
-          "201":
-            description: Пользователь зарегистрирован. Объект пользователя.
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/user'
+      responses:
+        "201":
+          description: Пользователь зарегистрирован. Объект пользователя.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user'
 
-          "409":
-            description: Пользователь с таким email уже существует.
+        "409":
+          description: Пользователь с таким email уже существует.
 
   /users/login:
     post:
@@ -48,19 +50,365 @@ paths:
       summary: Авторизация пользователя
       description: Авторизует пользователя на основе логина и пароля
 
+      requestBody:
+        description: Информация для авторизации пользователя
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/authenticateUser'
+        required: true
+
+      responses:
+          "201":
+            description: Пользователь вошел. Объект пользователя.
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/user'
+
+          "409":
+            description: Ошибка входа. Попробуйте позже.
+
     get:
       tags:
         - users
       summary: Проверка состояния пользователя
       description: Возвращает информацию по авторизованному пользователю
 
+      requestBody:
+        description: Информация для определения авторизации
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/user'
+        required: true
+
+      responses:
+          "201":
+            description: Успех. Состояние пользователя.
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/user'
+
+          "409":
+            description: Ошибка. Попробуйте позже.
+
   /users/{userId}/avatar:
+    parameters:
+      - name: userId
+        in: path
+        schema:
+          type: string
+        required: true
     post:
       tags:
         - users
       summary: Загрузить изображение аватара
       description: Загружает изображение аватара пользователя. Изображение
         аватара должно быть в формате `png` или `jpg`.
+
+      responses:
+          "201":
+            description: Пользователь зарегистрирован. Объект пользователя.
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/user'
+
+          "404":
+            description: Не удалось найти изображение.
+
+  /users/logout:
+    post:
+      tags:
+        - users
+      summary: Выход из приложения
+      description: Выходит из приложения
+
+      responses:
+        "201":
+          description: Произведен выход из приложения.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user'
+
+        "409":
+          description: Ошибка. Попробуйте в другой раз.
+
+  /users/{userId}/favourites:
+    parameters:
+      - name: userId
+        in: path
+        schema:
+          type: string
+        required: true
+    get:
+      tags:
+        - users
+      summary: Получить избранные пользователем предложения
+      description: Получает избранные пользователем предложения
+
+      responses:
+        "201":
+          description: Избранные пользователем предложения.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/userId'
+
+        "409":
+          description: Ошибка. Попробуйте в другой раз.
+
+    put:
+      tags:
+        - users
+      summary: Добавить предложение в избранное
+      description: Добавляет предложение в избранное
+
+      responses:
+        "201":
+          description: Предложение добавлено в избранное.
+
+        "409":
+          description: Ошибка. Невалидные данные.
+
+  /users/{userId}/favourites/{offerId}:
+    parameters:
+      - name: userId
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: offerId
+        in: path
+        schema:
+          type: string
+        required: true
+    delete:
+      tags:
+        - users
+      summary: Удалить предложение из избранного
+      description: Удаляет предложение из избранного
+
+      requestBody:
+        description: Информация для удаления избранного предложения
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/deleteFavourite'
+        required: true
+
+      responses:
+        "201":
+          description: Предложение удалено из избранного.
+
+        "409":
+          description: Ошибка. Невалидные данные.
+
+  /offers:
+    get:
+      tags:
+        - offers
+      summary: Получить список предложений по аренде
+      description: Получает список предложений по аренде
+
+      responses:
+        "201":
+          description: Предложения по аренде.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/offerList'
+
+        "409":
+          description: Ошибка. Невалидные данные.
+
+  /offers/premium:
+    get:
+      tags:
+        - offers
+      summary: Получить список премиальных предложений
+      description: Получает список премиальных предложений
+
+      responses:
+        "201":
+          description: Список премиальных предложений по аренде.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/offerList'
+
+        "409":
+          description: Ошибка. Невалидные данные.
+
+  /offers/{userId}:
+    parameters:
+      - name: userId
+        in: path
+        schema:
+          type: string
+        required: true
+    post:
+      tags:
+        - offers
+      summary: Создать новое предложение
+      description: Создаёт новое предложение
+
+      responses:
+        "201":
+          description: Новое предложение создано.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/addOffer'
+
+        "409":
+          description: Ошибка. Невалидные данные.
+
+  /offers/{offerId}:
+    parameters:
+      - name: offerId
+        in: path
+        schema:
+          type: string
+        required: true
+    get:
+      tags:
+        - offers
+      summary: Получить детальную информацию о предложении
+      description: Получает детальную информацию о предложении
+
+      requestBody:
+        description: Информация для удаления избранного предложения
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/getOffer'
+        required: true
+
+      responses:
+        "201":
+          description: Список премиальных предложений по аренде.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/offerType'
+
+        "409":
+          description: Ошибка. Невалидные данные.
+
+  /offers/{userId}/{offerId}:
+    parameters:
+      - name: userId
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: offerId
+        in: path
+        schema:
+          type: string
+        required: true
+    patch:
+      tags:
+        - offers
+      summary: Редактировать новое предложение
+      description: Редактирует новое предложение
+
+      requestBody:
+        description: Информация для удаления избранного предложения
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateOffer'
+        required: true
+
+      responses:
+        "201":
+          description: Предложение отредактировано.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/offerType'
+
+        "409":
+          description: Ошибка. Невалидные данные.
+
+    delete:
+      tags:
+        - offers
+      summary: Удалить предложение
+      description: Удаляет предложение
+
+      requestBody:
+        description: Информация для удаления избранного предложения
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/deleteFavourite'
+        required: true
+
+      responses:
+        "201":
+          description: Предложение удалено из избранного.
+
+        "409":
+          description: Ошибка. Предложения не существует.
+
+  /comments/{offerId}:
+    parameters:
+      - name: offerId
+        in: path
+        schema:
+          type: string
+        required: true
+    get:
+      tags:
+        - comments
+      summary: Получить список комментариев для предложения
+      description: Получает список комментариев для предложения
+
+      requestBody:
+        description: Информация для получения списка комментариев предложения
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/getComments'
+        required: true
+
+      responses:
+        "201":
+          description: Предложение удалено из избранного.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/commentList'
+
+        "409":
+          description: Ошибка. Такого предложения не существует.
+
+    post:
+      tags:
+        - comments
+      summary: Добавить комментарий для предложения
+      description: Добавляет комментарий для предложения
+
+      requestBody:
+        description: Информация для добавления комментария к предложению
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/getComments'
+        required: true
+
+      responses:
+        "201":
+          description: Комментарий добавлен к предложению.
+
+        "409":
+          description: Ошибка. Проверьте валидность данных.
 
 components:
   schemas:
@@ -74,11 +422,195 @@ components:
 
         email:
           type: string
-          example: bellockpaul@gmail.com
+          example: bellockpaul@icloud.com
 
         password:
           type: string
           example: 123456
+
+    authenticateUser:
+      type: object
+
+      properties:
+        email:
+          type: string
+          example: bellockpaul@icloud.com
+
+        password:
+          type: string
+          example: 123456
+
+    offerType:
+      type: object
+
+      properties:
+        title:
+          type: string
+          example: Квартира
+
+        description:
+          type: string
+          example: Номер в отеле с видом на море и завтраком включен.
+
+        city:
+          type: string
+          example: Dusseldorf
+
+        preview:
+          type: string
+          example: https://images.unsplash.com/photo-1502672023488-70e25813eb80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3000&q=80
+
+        photos:
+          type: array
+          example:
+            - photo1.jpg
+            - photo2.jpg
+            - photo3.jpg
+            - photo4.jpg
+            - photo5.jpg
+            - photo6.jpg
+
+        isPremium:
+          type: boolean
+          example: true
+
+        isFavourite:
+          type: boolean
+          example: true
+
+        rating:
+          type: number
+          example: 5
+
+        housingType:
+          $ref: '#/components/schemas/housingType'
+
+        roomCount:
+          type: number
+          example: 3
+
+        guestCount:
+          type: number
+          example: 5
+
+        rentPrice:
+          type: number
+          example: 10000
+
+        conveniences:
+          type: array
+          example:
+            - Breakfast
+            - Air conditioning
+            - Laptop friendly workspace
+            - Baby seat
+            - Washer
+            - Towels
+            - Fridge
+
+        author:
+          $ref: '#/components/schemas/user'
+
+        commentsCount:
+          type: number
+          example: 10
+
+        coordinates:
+          type: object
+          example:
+
+          properties:
+            longitude:
+              type: number
+              example: 48.85661
+            latitude:
+              type: number
+              example: 2.351499
+
+    addOffer:
+      type: object
+
+      properties:
+        title:
+          type: string
+          example: Котедж
+
+        description:
+          type: string
+          example: Просторный котедж с видом на горы и море
+
+        image:
+          type: string
+          example: photo1.jpg
+
+        type:
+          $ref: '#/components/schemas/offerType'
+
+    getOffer:
+      type: object
+
+      properties:
+        id:
+          type: string
+          example: 6329c3d6a04ab1061c6425ea
+
+    updateOffer:
+      type: object
+
+      properties:
+        title:
+          type: string
+          example: Котедж
+
+        description:
+          type: string
+          example: Просторный котедж с видом на горы и море
+
+        image:
+          type: string
+          example: https://images.unsplash.com/photo-1502672023488-70e25813eb80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3000&q=80
+
+        type:
+          $ref: '#/components/schemas/offerType'
+
+    offerList:
+      type: array
+      example:
+        - offerType
+        - offerType
+        - offerType
+
+    addFavourite:
+      type: object
+
+      properties:
+        userId:
+          type: string
+          example: 6329c3d6a04ab1061c6425ea
+
+        offerId:
+          type: string
+          example: ab1061c6425ea6329c3d6a04
+
+    deleteFavourite:
+      type: object
+
+      properties:
+        userId:
+          type: string
+          example: 6329c3d6a04ab1061c6425ea
+
+        offerId:
+          type: string
+          example: ab1061c6425ea6329c3d6a04
+
+    getComments:
+      type: object
+
+      properties:
+        offerId:
+          type: string
+          example: ab1061c6425ea6329c3d6a04
 
     user:
       type: object
@@ -95,3 +627,35 @@ components:
         type:
           type: string
           example: common
+
+    userId:
+      type: string
+      example: 6329c3d6a04ab1061c6425ea
+
+    housingType:
+      enum:
+        - apartment
+        - house
+        - room
+        - hotel
+      example: house
+
+    commentType:
+      type: object
+
+      properties:
+        userId:
+          type: string
+          example: 6329c3d6a04ab1061c6425ea
+
+        text:
+          type: string
+          example: Текст комментария тра-ла-ла
+
+
+    commentList:
+      type: array
+      example:
+        - $ref: '#/components/schemas/commentType'
+        - $ref: '#/components/schemas/commentType'
+        - $ref: '#/components/schemas/commentType'
