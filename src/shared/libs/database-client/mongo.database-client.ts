@@ -5,7 +5,7 @@ import { DatabaseClient } from './database-client.interface.js';
 import { Component } from '../../types/index.js';
 import { Logger } from '../logger/index.js';
 
-const RETRY_COUNT = 5;
+const RETRY_COUNT = 1; //5
 const RETRY_TIMEOUT = 1000;
 
 @injectable()
@@ -33,7 +33,8 @@ export class MongoDatabaseClient implements DatabaseClient {
     let attempt = 0;
     while (attempt < RETRY_COUNT) {
       try {
-        this.mongoose = await Mongoose.connect(uri);
+        this.logger.info(uri);
+        this.mongoose = await Mongoose.connect('mongodb://admin:test@localhost?authSource=admin'); // correct uri mongodb://admin:test@localhost?authSource=admin
         this.isConnected = true;
         this.logger.info('Database connection established.');
         return;
