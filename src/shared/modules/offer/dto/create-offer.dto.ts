@@ -1,4 +1,4 @@
-import { Coordinates, HousingType, User } from '../../../types/index.js';
+import { Coordinates, HousingType } from '../../../types/index.js';
 
 export class CreateOfferDto {
   public userId: string;
@@ -9,14 +9,11 @@ export class CreateOfferDto {
   public preview: string;
   public photos: string[];
   public isPremium: boolean;
-  public isFavourite: boolean;
-  public rating: number;
   public housingType: HousingType;
   public roomCount: number;
   public guestsCount: number;
   public rentPrice: number;
   public conveniences: string[];
-  public author: User;
-  public commentsCount: number;
+  public authorId: string;
   public coordinates: Coordinates;
 }

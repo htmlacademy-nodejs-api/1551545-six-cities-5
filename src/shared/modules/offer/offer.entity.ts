@@ -40,7 +40,11 @@ export class OfferEntity extends defaultClasses.TimeStamps {
   })
   public userId!: Ref<UserEntity>;
 
+  @prop({required: true})
   public isPremium!: boolean;
+
+  @prop({ required: true, default: 0 })
+  public commentsCount!: number;
 }
 
 export const OfferModel = getModelForClass(OfferEntity);
