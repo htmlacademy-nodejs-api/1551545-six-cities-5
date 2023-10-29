@@ -65,7 +65,6 @@ export class ImportCommand implements Command {
       authorId: user.id,
       coordinates: offer.coordinates
     });
-
   }
 
   public async execute(
@@ -79,7 +78,8 @@ export class ImportCommand implements Command {
     const uri = getMongoURI(login, password, host, DEFAULT_DB_PORT, dbname);
     this.salt = salt;
 
-    await this.databaseClient.connect(uri);
+    this.logger.info(uri);
+    await this.databaseClient.connect(uri); //mongodb://admin:test@localhost?authSource=admin
 
     const fileReader = new TSVFileReader(filename.trim());
 
@@ -93,5 +93,4 @@ export class ImportCommand implements Command {
       console.error(getErrorMessage(error));
     }
   }
-
 }
